@@ -1,10 +1,10 @@
 #include <Servo.h>
 
 const int anFirePin = A0;
-const int diFirePin = 5;
+const int diFirePin = 4;
 const int pumpPin = 6;
-const int servoPin = 7;
-Servo myServo;
+const int servo1Pin = 2;
+Servo servo1;
 
 int angle = 0;
 int times = 1;
@@ -13,20 +13,16 @@ void setup() {
   pinMode(anFirePin, INPUT);
   pinMode(diFirePin, INPUT);
   pinMode(pumpPin, OUTPUT);
-  myServo.attach(servoPin);
+  servo1.attach(servo1Pin);
 
   Serial.begin(9600);
 }
 
 void loop() {
-  digitalWrite(pumpPin, LOW);
-  scan();
-  Serial.println(analogRead(A0));
-
-  if (digitalRead(diFirePin)==HIGH) {
-    if (analogRead(anFirePin) < 40) {
-      pump();
-    }
+  if (fire()) {
+    pump();
+  } else {
+    scan();
   }
 }
 
@@ -38,7 +34,7 @@ void pump() {
 }
 
 void scan() {
-  myServo.write(angle);
+  servo1.write(angle);
   delay(25);
   if (angle == 180) {
     times = -1;
@@ -46,4 +42,12 @@ void scan() {
     times = 1;
   }
   angle = angle + (1 * times);
+}
+
+bool fire() {
+  if (digitalRead(diFirePin)==HIGH) {
+    return true;
+  } else {
+    return false;
+  }
 }
