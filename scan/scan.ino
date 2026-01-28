@@ -20,10 +20,10 @@ void loop() {
 
 void scan() {
   servo1.write(angle1);
-  delay(10);
-  if (angle1 == 180) {
+  delay(20);
+  if (angle1 >= 180) {
     direction1 = -1;
-  } else if (angle1 == 0) {
+  } else if (angle1 <= 0) {
     direction1 = 1;
   }
   angle1 = angle1 + direction1;
