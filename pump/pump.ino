@@ -7,6 +7,16 @@ void setup() {
 }
 
 void loop() {
+  pumpOn();
+  delay(1000);
+  pumpOff();
+  delay(1000);
+}
+
+void pumpOn() {
   digitalWrite(pumpPin, HIGH);
-  digitalWrite(13, HIGH);
+}
+
+void pumpOff() {
+  digitalWrite(pumpPin, LOW);
 }

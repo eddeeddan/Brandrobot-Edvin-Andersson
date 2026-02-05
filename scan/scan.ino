@@ -20,7 +20,7 @@ void loop() {
 
 void scan() {
   servo1.write(angle1);
-  delay(20);
+  delay(10);
   if (angle1 >= 180) {
     direction1 = -1;
   } else if (angle1 <= 0) {

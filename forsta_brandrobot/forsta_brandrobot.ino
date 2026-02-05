@@ -1,8 +1,8 @@
 #include <Servo.h>
 
 const int anFirePin = A0;
-const int diFirePin = 4;
-const int pumpPin = 6;
+const int diFirePin = 5;
+const int pumpPin = 4;
 const int servo1Pin = 2;
 Servo servo1;
 

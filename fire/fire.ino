@@ -1,18 +1,14 @@
-const int pumpPin = 4;
 const int diFirePin = 5;
 
 void setup() {
   pinMode(diFirePin, INPUT);
-  pinMode(pumpPin, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop() {
-  pump();
-
-  Serial.println(fire());
-
-
+  if (fire()) {
+    Serial.println("Eld");
+  }
 }
 
 bool fire(){
@@ -20,13 +16,5 @@ bool fire(){
     return true;
   }else{
     return false;
-  }
-}
-
-void pump() {
-  if (fire() == HIGH) {
-    digitalWrite(pumpPin, HIGH);
-  } else {
-    digitalWrite(pumpPin, LOW);
   }
 }
